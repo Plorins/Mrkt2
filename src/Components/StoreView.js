@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ProductGrid, ProductDetail } from './ProductGrid&Det'; 
 
 // Utility function to format numbers with K
 const formatNumberWithK = (number) => number >= 1000 ? (number / 1000).toFixed(1) + 'k' : number;
@@ -37,14 +38,56 @@ function StoreHeader({ store }) {
   );
 }
 
-function StoreView({ store, selectedProduct, renderProductGrid, renderProductDetail }) {
+function StoreView({ 
+  store, 
+  selectedProduct, 
+  onProductClick, 
+  onAddToCart, 
+  addedToCart, 
+  formatNumberWithK, 
+  noSearchResults,
+  searchTerm
+}) {
+  const [quantity, setQuantity] = useState(1);
+  
   if (!store) return null;
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    onAddToCart(selectedProduct, quantity);
+  };
   
   return (
     <div className="store-page">
       <StoreHeader store={store} />
       <h3 className="section-title">Products</h3>
-      {selectedProduct ? renderProductDetail() : renderProductGrid()}
+      
+      {selectedProduct ? (
+        <ProductDetail 
+          selectedProduct={selectedProduct}
+          quantity={quantity}
+          increaseQuantity={increaseQuantity}
+          decreaseQuantity={decreaseQuantity}
+          handleAddToCart={handleAddToCart}
+          addedToCart={addedToCart}
+        />
+      ) : (
+        <ProductGrid 
+          selectedStore={store}
+          handleProductClick={onProductClick}
+          noSearchResults={noSearchResults}
+          searchTerm={searchTerm}
+        />
+      )}
     </div>
   );
 }

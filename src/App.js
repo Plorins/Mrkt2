@@ -265,7 +265,7 @@ function App() {
     setAddedToCart(true);
     setTimeout(() => {
       setAddedToCart(false);
-    }, 2500);
+    }, 900);
   };
 
   const handleCheckout = () => {
