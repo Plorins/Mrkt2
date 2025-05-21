@@ -3,6 +3,7 @@ import Header from './Components/Header';
 import StoreList from './Components/StoreList';
 import StoreView from './Components/StoreView';
 import Cart from './Components/Cart';
+import SearchResults from './Components/SearchResults';
 import images from './ImgSrcs';
 import './App.css';
 
