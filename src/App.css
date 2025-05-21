@@ -407,6 +407,52 @@ body {
   background-color: #4CAF50;
 }
 
+/*Search Result grid*/
+.search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.search-result-item {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-result-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.search-result-image img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border-radius: 4px;
+}
+
+.search-result-placeholder {
+  width: 100px;
+  height: 100px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #bbb;
+  margin-bottom: 12px;
+  border-radius: 4px;
+}
+
 /* Cart Page */
 .cart-page {
   padding: 1rem;
